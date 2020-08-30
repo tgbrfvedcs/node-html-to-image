@@ -14,9 +14,9 @@ module.exports = async function(options) {
   if (!html) {
     throw Error('You must provide an html property.')
   }
-
+  Cluster.defaultArgs({args: ['--no-sandbox']})
   const cluster = await Cluster.launch({
-    puppeteerOptions:{args: ['--no-sandbox']},
+    // puppeteerOptions:{},
     concurrency: Cluster.CONCURRENCY_CONTEXT,
     maxConcurrency: 2,
     puppeteerOptions: { ...puppeteerArgs, headless: true },
