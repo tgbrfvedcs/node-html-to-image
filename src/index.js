@@ -16,7 +16,7 @@ module.exports = async function(options) {
   }
 
   const cluster = await Cluster.launch({
-    args: ['--no-sandbox'],
+    puppeteerOptions:{args: ['--no-sandbox']},
     concurrency: Cluster.CONCURRENCY_CONTEXT,
     maxConcurrency: 2,
     puppeteerOptions: { ...puppeteerArgs, headless: true },
